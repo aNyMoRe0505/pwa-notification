@@ -1,4 +1,4 @@
-import { memo, useEffect, useCallback, useState, useMemo } from 'react';
+import { memo, useEffect, useCallback, useState, useMemo, useRef } from 'react';
 import { styled } from 'styled-components';
 
 const Block = styled.div`
@@ -6,6 +6,17 @@ const Block = styled.div`
   font-size: 20px;
   width: 90%;
   padding: 20px;
+  border: 1px solid black;
+`;
+
+const Input = styled.input`
+  width: 150px;
+  display: block;
+  margin: 10px 0 0;
+  height: 20px;
+  border-radius: 10px;
+  outline: none;
+  padding: 10px;
   border: 1px solid black;
 `;
 
@@ -30,10 +41,11 @@ const Btn = styled.button`
 `;
 
 const NotificationRequest = () => {
+  const inputRef = useRef();
   const [notificationModalType, setNotificationModalType] = useState(null);
 
   const sendNotification = useCallback(async () => {
-    await fetch('/api/notification', {
+    await fetch(`/api/notification?title=${inputRef.current?.value}`, {
       method: 'GET',
     });
   }, []);
@@ -105,6 +117,7 @@ const NotificationRequest = () => {
             )}
           </Block>
         ) : null}
+        <Input ref={inputRef} />
         {/* <Btn onClick={subscribe}>manual subscribe</Btn> */}
         <Btn onClick={sendNotification}>sendNotification</Btn>
       </>

@@ -74,13 +74,11 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('push', (event) => {
   const data = event?.data.json();
 
-  console.log('data', data);
-
   event?.waitUntil(
     self.registration.showNotification('Notification Title', {
       // tag, silent, lang, icon, dir, body
       icon: 'icons/maskable_icon.png',
-      body: 'ABCDEFG',
+      body: data.title || 'Default',
       data: 'https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe',
       actions: [
         {

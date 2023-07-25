@@ -17,6 +17,7 @@ export default async function handler(req, res) {
             await webpush.sendNotification(
               subscriber,
               JSON.stringify({
+                title: req.query.title || '你好, 朋友！',
                 keyA: 'hello',
                 keyB: 'yoyoman',
                 keyC: 'haha',
