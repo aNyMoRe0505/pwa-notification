@@ -4,7 +4,7 @@
 self.__WB_DISABLE_DEV_LOGS = true;
 
 // eslint-disable-next-line no-unused-vars
-const OFFLINE_VERSION = 5; // increment this number to force previously cached resources to be updated (kickoff install event)
+const OFFLINE_VERSION = 1; // increment this number to force previously cached resources to be updated (kickoff install event)
 const CACHE_NAME = 'offline';
 const OFFLINE_URL = 'offline.html';
 
@@ -58,18 +58,17 @@ self.addEventListener('activate', () => {
 self.addEventListener('fetch', (event) => {
   // only handle navigate request
   if (event.request.mode === 'navigate') {
-    event.respondWith(
-      (async () => {
-        try {
-          const networkResponse = await fetch(event.request);
-          return networkResponse;
-        } catch (error) {
-          const cache = await caches.open(CACHE_NAME);
-          const cachedResponse = await cache.match(OFFLINE_URL);
-          return cachedResponse;
-        }
-      })(),
-    );
+    const promise = async () => {
+      try {
+        const networkResponse = await fetch(event.request);
+        return networkResponse;
+      } catch {
+        const cache = await caches.open(CACHE_NAME);
+        const cachedResponse = await cache.match(OFFLINE_URL);
+        return cachedResponse;
+      }
+    };
+    event.respondWith(promise());
   }
 });
 
