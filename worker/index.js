@@ -4,7 +4,6 @@
 self.__WB_DISABLE_DEV_LOGS = true;
 
 // eslint-disable-next-line no-unused-vars
-const OFFLINE_VERSION = 1; // increment this number to force previously cached resources to be updated (kickoff install event)
 const CACHE_NAME = 'offline';
 const OFFLINE_URL = 'offline.html';
 
