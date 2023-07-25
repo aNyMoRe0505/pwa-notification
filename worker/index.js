@@ -9,7 +9,7 @@ const OFFLINE_URL = 'offline.html';
 
 self.addEventListener('install', (event) => {
   console.log('install event');
-  self.skipWaiting();
+  // self.skipWaiting();
 
   event.waitUntil(
     (async () => {

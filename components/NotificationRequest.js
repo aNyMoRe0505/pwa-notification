@@ -81,6 +81,8 @@ const NotificationRequest = () => {
       // denied || default
       setNotificationModalType(permissionState);
     }
+
+    alert('hihi, test');
   }, [subscribe]);
 
   const MainContent = useMemo(
