@@ -9,6 +9,8 @@ module.exports = {
     indent: 0,
     'implicit-arrow-linebreak': 0,
     'max-len': 0,
+    'no-alert': 0,
+    'no-restricted-globals': 0,
   },
   settings: {
     'import/resolver': {

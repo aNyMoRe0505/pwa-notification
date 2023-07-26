@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import NotificationRequest from '@/components/NotificationRequest';
+import ServiceWorker from '@/components/ServiceWorker';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
       <NotificationRequest />
+      <ServiceWorker />
     </>
   );
 }

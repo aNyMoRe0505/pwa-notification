@@ -1,5 +1,5 @@
 import { memo, useEffect, useCallback, useState, useMemo, useRef } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const Block = styled.div`
   color: red;
@@ -81,8 +81,6 @@ const NotificationRequest = () => {
       // denied || default
       setNotificationModalType(permissionState);
     }
-
-    alert('hihi, test');
   }, [subscribe]);
 
   const MainContent = useMemo(

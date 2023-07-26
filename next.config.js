@@ -5,9 +5,11 @@ const withPWA = require('@ducanh2912/next-pwa').default({
   disable: false,
   // disable: process.env.NODE_ENV === 'development',
   buildExcludes: [() => true],
+  cacheStartUrl: false,
+  dynamicStartUrl: false,
   workboxOptions: {
-    skipWaiting: false, // ?? bug
-    clientsClaim: false, // ?? bug
+    skipWaiting: false,
+    clientsClaim: false,
   },
 });
 
