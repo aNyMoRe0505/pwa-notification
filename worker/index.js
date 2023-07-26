@@ -8,7 +8,7 @@ const CACHE_NAME = 'offline';
 const OFFLINE_URL = 'offline.html';
 
 self.addEventListener('install', (event) => {
-  console.log('install event');
+  console.log('install event1');
 
   event.waitUntil(
     (async () => {
